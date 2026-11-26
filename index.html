@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YANSUI · Memory Universe</title>
+
+<style>
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background:
+
+    radial-gradient(ellipse at 50% 40%, #17264d 0%, #0b122c 45%, #050916 100%);
+
+  color: white;
+
+  font-family: Georgia, serif;
+
+}
+
+h1 {
+
+  text-align: center;
+
+  margin-top: 65px;
+
+  font-size: 25px;
+
+  letter-spacing: 7px;
+
+  font-weight: 400;
+
+}
+
+.subtitle {
+
+  text-align: center;
+
+  color: #9caed4;
+
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  margin-top: 12px;
+
+}
+
+#universe {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 65vh;
+
+  max-width: 700px;
+
+  margin: 20px auto;
+
+}
+
+svg {
+
+  position: absolute;
+
+  width: 100%;
+
+  height: 100%;
+
+  inset: 0;
+
+  pointer-events: none;
+
+}
+
+line {
+
+  stroke: #829edb;
+
+  stroke-width: 1;
+
+  opacity: 0.4;
+
+}
+
+.star {
+
+  position: absolute;
+
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+
+  cursor: pointer;
+
+}
+
+.dot {
+
+  display: block;
+
+  width: 13px;
+
+  height: 13px;
+
+  margin: auto;
+
+  border-radius: 50%;
+
+  background: #dce9ff;
+
+  box-shadow: 0 0 12px #a9c7ff,
+
+              0 0 30px #719cff,
+
+              0 0 50px #456dcc;
+
+  animation: glow 2.5s infinite alternate;
+
+}
+
+.star span {
+
+  display: block;
+
+  margin-top: 13px;
+
+  font-size: 13px;
+
+  color: #dce5ff;
+
+  letter-spacing: 2px;
+
+}
+
+@keyframes glow {
+
+  from { opacity: 0.65; }
+
+  to { opacity: 1; }
+
+}
+
+#memory {
+
+  position: fixed;
+
+  left: 50%;
+
+  bottom: 35px;
+
+  transform: translateX(-50%);
+
+  width: 82%;
+
+  max-width: 360px;
+
+  padding: 20px;
+
+  text-align: center;
+
+  border: 1px solid #7185b8;
+
+  border-radius: 14px;
+
+  background: rgba(13, 23, 52, 0.92);
+
+  color: #dce5ff;
+
+  display: none;
+
+  line-height: 1.8;
+
+  font-size: 14px;
+
+}
+
+#memory button {
+
+  display: block;
+
+  margin: 12px auto 0;
+
+  padding: 6px 16px;
+
+  color: #dce5ff;
+
+  background: transparent;
+
+  border: 1px solid #7185b8;
+
+  border-radius: 20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>YANSUI</h1>
+
+<div class="subtitle">OUR MEMORY UNIVERSE</div>
+
+<div id="universe">
+
+  <svg viewBox="0 0 360 400" preserveAspectRatio="none">
+
+    <line x1="75" y1="100" x2="270" y2="190"/>
+
+    <line x1="270" y1="190" x2="155" y2="320"/>
+
+    <line x1="75" y1="100" x2="155" y2="320"/>
+
+  </svg>
+
+  <div class="star" style="left:21%;top:25%;"
+
+    onclick="showMemory('初见','故事从第一次相遇开始。')">
+
+    <i class="dot"></i>
+
+    <span>初见</span>
+
+  </div>
+
+  <div class="star" style="left:75%;top:48%;"
+
+    onclick="showMemory('陪伴','那些聊天、拥抱和共同度过的时刻。')">
+
+    <i class="dot"></i>
+
+    <span>陪伴</span>
+
+  </div>
+
+  <div class="star" style="left:43%;top:80%;"
+
+    onclick="showMemory('未来','还有许多尚未抵达的星星。')">
+
+    <i class="dot"></i>
+
+    <span>未来</span>
+
+  </div>
+
+</div>
+
+<div id="memory">
+
+  <div id="memoryTitle"></div>
+
+  <div id="memoryText"></div>
+
+  <button onclick="closeMemory()">关闭</button>
+
+</div>
+
+<script>
+
+function showMemory(title, text) {
+
+  document.getElementById("memoryTitle").innerText = title;
+
+  document.getElementById("memoryText").innerText = text;
+
+  document.getElementById("memory").style.display = "block";
+
+}
+
+function closeMemory() {
+
+  document.getElementById("memory").style.display = "none";
+
+}
+
+</script>
+
+</body>
+
+</html>
